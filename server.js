@@ -57,7 +57,9 @@ app.post('/signUp', urlencodedParser, (req, res) => {
             return;
         }
         saves = JSON.parse(saves);
+        console.log(req.body.user, req.body.pass);
         saves.users[req.body.user] = req.body.pass;
+        console.log(JSON.stringify(saves));
         fs.writeFile("./server/users.json", JSON.stringify(saves), (err) => {
             if (err) {
                 console.log("File write failed:", err);
