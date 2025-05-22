@@ -76,6 +76,16 @@ app.get('/signUp', (req, res) => {
 app.get('/logIn', (req, res) => {
     res.render('logIn');
 });
+app.post('/post', urlencodedParser, (req, res) => {
+    let x = false;
+    fs.readFile(".server/users.json", (json) => {
+        data = JSON.parse(json);
+        x = data["users"][req.body.user] == req.body.pass;
+    });
+    if (x) {
+        res.render
+    }
+});
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
